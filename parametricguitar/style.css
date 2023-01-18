@@ -2,10 +2,10 @@
     --color-primary: #1ca0f1!important;
     --cta-color-bg: #e4f5fe!important;
     --cta-padding: 12px 22px!important;
-    --cta-border-radius: 50px!important;
+    --cta-border-radius: 10px!important;
     --cta-color-text: #424b55!important;
     --color-text-default: #424b55;
-    --callout-border-radius: 20px!important;
+    --callout-border-radius: 10px!important;
     --inline-code-bg-color: rgba(28, 160, 241, 0.1)!important;
     --content-width: 1500px!important;
     /**/
@@ -361,7 +361,7 @@ ul>.notion-list-item:before {
 }
 
 .notion-embed__container>iframe {
-    border-radius: 25px!important;
+    border-radius: 20px!important;
     box-shadow: 0 10px 40px -10px rgb(0 0 0 / 12%)!important;
 }
 
@@ -433,7 +433,7 @@ ul>.notion-list-item:before {
     overflow: auto !important;
     padding: 15px!important;
     padding-top: 25px!important;
-    /* border-right: 1px solid var(--color-border-default)!important; */
+    border-right: 0px solid var(--color-border-default)!important;
     z-index: 10!important;
     width: 270px!important;
     min-width: 270px!important;
@@ -550,7 +550,7 @@ ul>.notion-list-item:before {
     /*position: fixed;*/
     padding: 30px!important;
     padding-top: 25px!important;
-    /* border-left: 1px solid var(--color-border-default)!important; */
+    border-left: 0px solid var(--color-border-default)!important;
     z-index: 10!important;
     background: var(--color-bg-default)!important;
     overflow: auto!important;
