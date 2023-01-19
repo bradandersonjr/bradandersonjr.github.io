@@ -1,5 +1,6 @@
 :root {
     --color-primary: #1ca0f1!important;
+    --color-bg-default: #F2F2F2!important;
     --cta-color-bg: #CCCCCC!important;
     --cta-padding: 12px 22px!important;
     --cta-border-radius: 10px!important;
