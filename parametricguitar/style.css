@@ -126,11 +126,11 @@ body {
     padding: 0px!important;
     margin: 0px!important;
 }
-
+/*
 .notion-header__cover {
     display: none!important;
 }
-
+*/
 .notion-header__content {
     padding: 0px!important;
     display: flex!important;
