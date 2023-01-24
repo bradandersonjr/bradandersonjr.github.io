@@ -1,10 +1,10 @@
 :root {
-    --color-primary: #68B1E6!important;
-    --cta-color-bg: #333d4a!important;
+    --color-primary: #333d4a!important;
+    --cta-color-bg: #e4f5fe!important;
     --cta-padding: 12px 22px!important;
     --cta-border-radius: 10px!important;
-    --cta-color-text: #f1f1f1!important;
-    --color-text-default: #333d4a;
+    --cta-color-text: #424b55!important;
+    --color-text-default: #424b55;
     --callout-border-radius: 20px!important;
     --inline-code-bg-color: rgba(28, 160, 241, 0.1)!important;
     --content-width: 1500px!important;
