@@ -32,9 +32,9 @@ body {
     font-size: 16px !important;
 }
 
-.super-content {
+/* .super-content {
     padding: 0 !important;
-}
+} */
 
 .super-navbar, .notion-navbar {
     border-bottom: 1px solid var(--color-border-default)!important;
