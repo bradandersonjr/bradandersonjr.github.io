@@ -53,16 +53,6 @@ body {
 .notion-toggle.bg-brown {
   display: none !important; }
 
-.super-navbar__item {
-  font-weight: 600 !important;
-  letter-spacing: -0.2px !important; }
-
-.super-navbar__cta {
-  padding: 12px 16px !important;
-  border-radius: var(--cta-border-radii) !important;
-  font-weight: 600 !important;
-  letter-spacing: -0.2px !important; }
-
 .notion-link {
   opacity: 1 !important; }
   .notion-link:hover {
