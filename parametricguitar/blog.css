@@ -28,15 +28,19 @@
   --picker-hover-border-color: #f0f0f0!important;
   --collection-card-cover-size-small: 140px!important;
   /* CTA button styles */
-  --cta-padding: 12px 16px!important;
-  --cta-border-radii: 7px!important;
-  --cta-color-bg: var(--navbar-button-background-color)!important;
-  --cta-color-text: var(--navbar-button-text-color)!important; }
+  --cta-padding: 12px 22px!important;
+  --cta-border-radius: 10px!important;
+  --cta-color-text: #FFFFFF!important;
+  --cta-color-bg: #333D4A!important;
 
 body {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   text-rendering: optimizeLegibility !important; }
+
+.super-content {
+    padding: 1em !important;
+}
 
 .notion-embed__container > iframe {
   background: var(--color-bg-default) !important; }
