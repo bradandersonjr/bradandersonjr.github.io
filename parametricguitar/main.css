@@ -1,9 +1,9 @@
 :root {
     --color-primary: #333d4a!important;
-		--cta-color-text: #FFFFFF!important;
-		--cta-color-bg: #333D4A!important;
-		--cta-padding: 12px 22px!important;
-		--cta-border-radius: 10px!important;
+    --cta-color-text: #FFFFFF!important;
+    --cta-color-bg: #333D4A!important;
+    --cta-padding: 12px 22px!important;
+    --cta-border-radius: 10px!important;
     --color-text-default: #424b55;
     --callout-border-radius: 5px!important;
     --inline-code-bg-color: rgba(28, 160, 241, 0.1)!important;
