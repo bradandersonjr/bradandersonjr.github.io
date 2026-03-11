@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Keeping only font assignments to ensure Inter and Fira Code apply correctly */
         body { font-family: 'Inter', sans-serif; }
         .mono { font-family: 'Fira Code', monospace; }
     </style>
@@ -41,88 +40,73 @@
         <div class="flex items-center justify-between mb-12">
             <h2 class="text-base font-bold uppercase tracking-[0.25em] text-slate-400 lowercase">project archive</h2>
             <div class="text-sm mono text-slate-400 hidden sm:block border border-slate-200 px-5 py-2 rounded-full">
-                nodes_indexed: <span id="repo-count" class="text-slate-900 font-bold">0</span>
+                nodes_indexed: <span id="repo-count" class="text-slate-900 font-bold">--</span>
             </div>
         </div>
 
         <div id="gallery" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            <!-- Cards injected via JS -->
+            <!-- Loading state -->
+            <div class="col-span-full py-20 text-center mono text-slate-300 animate-pulse">
+                scanning /projects/...
+            </div>
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="py-24 text-center text-slate-400 text-base border-t border-slate-50 mt-16">
         <p class="mono tracking-widest lowercase">© <span id="year"></span> bradandersonjr.dev // precision & purpose</p>
     </footer>
 
     <script>
-        const projects = [
-            {
-                title: "sawbuilt",
-                category: "manufacturing",
-                description: "high-performance cnc & workshop accessories designed in fusion 360 and built with petg-cf.",
-                status: "active",
-                statusStyles: "bg-green-50 text-green-700 border-green-200",
-                tags: ["fusion 360", "3d printing", "e-commerce"],
-                link: "https://www.etsy.com/shop/SAWBuilt"
-            },
-            {
-                title: "guitar engine",
-                category: "software",
-                description: "a python-based fusion 360 add-in for automating complex lutherie geometry and fretboard layouts.",
-                status: "active",
-                statusStyles: "bg-green-50 text-green-700 border-green-200",
-                tags: ["python", "fusion api", "lutherie"],
-                link: "https://github.com/bradandersonjr/GuitarEngine"
-            },
-            {
-                title: "arcane illumination",
-                category: "game dev",
-                description: "a survival-horror experience built in unity, featuring reactive lighting and procedural puzzles.",
-                status: "beta",
-                statusStyles: "bg-amber-50 text-amber-700 border-amber-200",
-                tags: ["unity", "c#", "game design"],
-                link: "https://bradandersonjr.itch.io/"
-            },
-            {
-                title: "spoilboard.app",
-                category: "web tool",
-                description: "a parametric generator for cnc spoilboard patterns, allowing users to export custom dxf files.",
-                status: "in development",
-                statusStyles: "bg-sky-50 text-sky-700 border-sky-200",
-                tags: ["react", "cad", "cnc"],
-                link: "https://dev.bradandersonjr.com"
-            },
-            {
-                title: "fusion 360 luthiers",
-                category: "community",
-                description: "managing a group dedicated to digital instrument design and precision digital fabrication.",
-                status: "active",
-                statusStyles: "bg-green-50 text-green-700 border-green-200",
-                tags: ["community", "cad", "cnc"],
-                link: "https://facebook.com/groups/fusion360luthiers"
-            },
-            {
-                title: "popjot",
-                category: "utility",
-                description: "a lightweight, markdown-first note-taking application for developers built with electron.",
-                status: "archive",
-                statusStyles: "bg-slate-50 text-slate-600 border-slate-200",
-                tags: ["react", "electron", "ux"],
-                link: "#"
-            }
-        ];
+        const REPO_OWNER = 'bradandersonjr';
+        const REPO_NAME = 'bradandersonjr.github.io';
+        const PROJECTS_PATH = 'projects';
 
-        function renderGallery() {
+        async function fetchProjects() {
             const container = document.getElementById('gallery');
             const countEl = document.getElementById('repo-count');
+
+            try {
+                // 1. Ask GitHub API for a list of files in the /projects folder
+                const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${PROJECTS_PATH}`);
+                
+                if (!response.ok) throw new Error('Could not scan directory');
+                
+                const files = await response.json();
+                
+                // 2. Filter for only .json files
+                const jsonFiles = files.filter(file => file.name.endsWith('.json'));
+                
+                // 3. Fetch the content of each JSON file
+                const projectData = await Promise.all(jsonFiles.map(async (file) => {
+                    const res = await fetch(file.download_url);
+                    return res.json();
+                }));
+
+                // 4. Update the UI
+                countEl.textContent = projectData.length.toString().padStart(2, '0');
+                renderGallery(projectData);
+
+            } catch (error) {
+                console.error(error);
+                container.innerHTML = `<div class="col-span-full text-center py-10 text-red-400 mono">error: failed to load project data. please ensure /projects folder exists.</div>`;
+            }
+        }
+
+        function renderGallery(data) {
+            const container = document.getElementById('gallery');
             
-            countEl.textContent = projects.length.toString().padStart(2, '0');
-            container.innerHTML = projects.map(project => `
+            const statusStyles = {
+                'active': 'bg-green-50 text-green-700 border-green-200',
+                'beta': 'bg-amber-50 text-amber-700 border-amber-200',
+                'in development': 'bg-sky-50 text-sky-700 border-sky-200',
+                'archive': 'bg-slate-50 text-slate-600 border-slate-200'
+            };
+
+            container.innerHTML = data.map(project => `
                 <div class="bg-white border border-slate-200 p-10 rounded-[1.5rem] shadow-sm flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:border-[#fcbf47] hover:shadow-[0_12px_25px_-10px_rgba(252,191,71,0.3)] group">
                     <div>
                         <div class="flex justify-between items-start mb-8">
-                            <span class="text-[12px] mono font-bold px-4 py-1.5 rounded-full border lowercase ${project.statusStyles}">
+                            <span class="text-[12px] mono font-bold px-4 py-1.5 rounded-full border lowercase ${statusStyles[project.status.toLowerCase()] || statusStyles['archive']}">
                                 ${project.status}
                             </span>
                             <span class="text-[12px] font-bold text-slate-300 uppercase tracking-widest lowercase">${project.category}</span>
@@ -146,7 +130,7 @@
         }
 
         document.getElementById('year').textContent = new Date().getFullYear();
-        renderGallery();
+        fetchProjects();
     </script>
 </body>
 </html>
