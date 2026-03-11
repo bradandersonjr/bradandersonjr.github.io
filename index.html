@@ -18,7 +18,7 @@
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <div>
                 <p class="mono text-slate-400 text-sm mb-3 font-medium tracking-tight">> whoami</p>
-                <h1 class="mono text-5xl font-bold tracking-tighter mb-4 lowercase text-slate-900 leading-none">brad anderson jr</h1>
+                <h1 class="mono text-5xl font-bold tracking-tighter mb-4 text-slate-900 leading-none">brad anderson jr</h1>
                 <p class="text-slate-500 text-xl max-w-xl leading-relaxed">
                     technical creator bridging the gap between digital code and physical fabrication. 
                     owner of <a href="https://andersonideaworks.com" target="_blank" class="text-slate-900 font-semibold italic uppercase border-b-2 border-transparent hover:border-[#fcbf47] transition-colors">anderson ideaworks llc</a>.
@@ -48,7 +48,7 @@
     <!-- Main Gallery -->
     <main class="py-16 px-6 max-w-5xl mx-auto">
         <div class="flex items-center justify-between mb-10">
-            <h2 class="text-[11px] font-bold uppercase tracking-[0.25em] text-slate-400 lowercase">project archive</h2>
+            <h2 class="text-[11px] font-bold uppercase tracking-[0.25em] text-slate-400">project archive</h2>
             <div class="text-[10px] mono text-slate-400 hidden sm:block border border-slate-200 px-4 py-1.5 rounded-full">
                 nodes_indexed: <span id="repo-count" class="text-slate-900 font-bold">--</span>
             </div>
@@ -63,7 +63,7 @@
     </main>
 
     <footer class="py-20 text-center text-slate-400 text-xs border-t border-slate-50 mt-12">
-        <p class="mono tracking-widest lowercase">© <span id="year"></span> bradandersonjr.dev // precision & purpose</p>
+        <p class="mono tracking-widest uppercase">© <span id="year"></span> bradandersonjr.dev // precision & purpose</p>
     </footer>
 
     <script>
@@ -105,23 +105,23 @@
                 <div class="bg-white border border-slate-200 p-8 rounded-[1rem] shadow-sm flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:border-[#fcbf47] hover:shadow-[0_12px_25px_-10px_rgba(252,191,71,0.3)] group">
                     <div>
                         <div class="flex justify-between items-start mb-6">
-                            <span class="text-[10px] mono font-bold px-3 py-1 rounded-full border lowercase ${statusStyles[project.status.toLowerCase()] || statusStyles['archive']}">
+                            <span class="text-[10px] mono font-bold px-3 py-1 rounded-full border ${statusStyles[project.status.toLowerCase()] || statusStyles['archive']}">
                                 ${project.status}
                             </span>
-                            <span class="text-[10px] font-bold text-slate-300 uppercase tracking-widest lowercase">${project.category}</span>
+                            <span class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">${project.category}</span>
                         </div>
-                        <h3 class="text-2xl font-black mb-3 text-slate-900 lowercase group-hover:text-slate-950 leading-tight">${project.title}</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed mb-8 lowercase">${project.description}</p>
+                        <h3 class="text-2xl font-black mb-3 text-slate-900 group-hover:text-slate-950 leading-tight">${project.title}</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-8">${project.description}</p>
                     </div>
                     
                     <div>
                         <div class="flex flex-wrap gap-2 mb-8">
                             ${project.tags.map(tag => `
-                                <span class="text-[10px] mono text-slate-400 bg-slate-50 border border-slate-100 px-2 py-0.5 rounded-lg lowercase">#${tag}</span>
+                                <span class="text-[10px] mono text-slate-400 bg-slate-50 border border-slate-100 px-2 py-0.5 rounded-lg">#${tag}</span>
                             `).join('')}
                         </div>
-                        <a href="${project.link}" target="_blank" class="block w-full text-center py-3.5 bg-slate-900 text-white rounded-xl font-bold transition-all duration-200 hover:bg-[#fcbf47] hover:text-slate-900 active:scale-[0.97] lowercase text-base">
-                            view project
+                        <a href="${project.link}" target="_blank" class="block w-full text-center py-3.5 bg-slate-900 text-white rounded-xl font-bold transition-all duration-200 hover:bg-[#fcbf47] hover:text-slate-900 active:scale-[0.97] text-base">
+                            View Project
                         </a>
                     </div>
                 </div>
