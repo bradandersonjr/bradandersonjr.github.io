@@ -1,8 +1,8 @@
 {
-    "title": "sawbuilt",
+    "title": "SAWBuilt",
     "category": "manufacturing",
     "description": "high-performance cnc accessories.",
     "status": "active",
-    "tags": ["fusion 360", "3d printing"],
-    "link": "https://..."
+    "tags": ["autodesk fusion", "3d printing", "cnc", "laser engraving"],
+    "link": "https://www.SAWBuilt.com"
 }
